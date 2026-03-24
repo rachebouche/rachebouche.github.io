@@ -439,13 +439,35 @@
     }
 
     @media (max-width: 640px) {
+      /* ── NAV: 2-row layout ── */
+      nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: .5rem 1rem .25rem;
+        gap: .25rem .5rem;
+      }
+      nav .logo { flex: 1; font-size: .95rem; }
+      nav ul {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: .35rem 0 .45rem;
+        gap: 1.4rem;
+        scrollbar-width: none;
+      }
+      nav ul::-webkit-scrollbar { display: none; }
+      nav ul li a {
+        font-size: .85rem;
+        white-space: nowrap;
+      }
+      main { padding-top: 96px; }
+
+      /* ── REST ── */
       #hero { flex-direction: column; text-align: center; }
       #hero .info p { max-width: 100%; }
       .badges { justify-content: center; }
       .edu-card { flex-direction: column; }
       .edu-card .edu-left { flex-direction: row; }
-      nav ul { gap: 1rem; }
-      nav ul li a { font-size: .8rem; }
     }
   </style>
 </head>
