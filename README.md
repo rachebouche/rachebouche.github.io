@@ -102,7 +102,7 @@ Previously, I worked as a **Research Engineer at Ecole Polytechnique** (Laborato
 ## Languages
 
 - **French** — Native
-- **English** — B2
+- **English** — C1
 
 ---
 
