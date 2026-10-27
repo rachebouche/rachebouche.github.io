@@ -4,474 +4,565 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rayane Achebouche &mdash; Bioinformatics PhD</title>
+  <link rel="canonical" href="https://rachebouche.github.io/" />
+  <meta name="description" content="Rayane Achebouche — PhD in Bioinformatics, Universite Paris Cite. AI models linking molecular structure to biological effect: predictive toxicology, transcriptomics, Cell Painting, graph neural networks." />
+  <meta name="author" content="Rayane Achebouche" />
+
+  <!-- Open Graph / Twitter: controls what a shared link shows on LinkedIn, X, Slack -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://rachebouche.github.io/" />
+  <meta property="og:title" content="Rayane Achebouche — Bioinformatics PhD" />
+  <meta property="og:description" content="AI models linking molecular structure to biological effect, across transcriptomics, high-content imaging and molecular graphs. Predictive toxicology without animal testing." />
+  <meta property="og:image" content="https://rachebouche.github.io/3d-character_profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rayane Achebouche — Bioinformatics PhD" />
+  <meta name="twitter:description" content="AI models linking molecular structure to biological effect. Predictive toxicology, transcriptomics, Cell Painting, GNNs." />
+  <meta name="twitter:image" content="https://rachebouche.github.io/3d-character_profile.jpg" />
+
+  <!-- Favicon inline: no extra file to serve -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&apos;http://www.w3.org/2000/svg&apos; viewBox=&apos;0 0 32 32&apos;%3E%3Crect width=&apos;32&apos; height=&apos;32&apos; rx=&apos;7&apos; fill=&apos;%232f81f7&apos;/%3E%3Ctext x=&apos;16&apos; y=&apos;22&apos; font-family=&apos;Helvetica,Arial,sans-serif&apos; font-size=&apos;16&apos; font-weight=&apos;bold&apos; fill=&apos;%23fff&apos; text-anchor=&apos;middle&apos;%3ERA%3C/text%3E%3C/svg%3E" />
   <style>
+    /* ═══ JETONS ═══════════════════════════════════════════════════════════ */
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #21262d;
-      --border: #30363d;
-      --accent: #2f81f7;
-      --accent-soft: #1f4fa8;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --tag-bg: #1f4fa820;
-      --tag-border: #2f81f750;
+      color-scheme: dark;
+      --bg:        #0b0f14;
+      --bg-soft:   #0e141b;
+      --surface:   #121a22;
+      --surface2:  #18222c;
+      --border:    #1e2a35;
+      --border-br: #2a3a48;
+      --text:      #e9eef3;
+      --muted:     #9fadba;
+      --faint:     #6f7d8a;
+      --accent:    #4dd4c0;
+      --accent-dim:#1e5c54;
+      --accent-bg: #4dd4c014;
+      --review:    #d9a85a;
+      --review-bg: #d9a85a12;
+      --nav-ink:  #b3c0cc;
+
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+      --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono:  ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+      --s1: .25rem; --s2: .5rem;  --s3: .75rem; --s4: 1rem;
+      --s5: 1.5rem; --s6: 2.25rem; --s7: 3.5rem; --s8: 5.5rem;
+
+      --measure: 60ch;   /* ~70 caracteres reels : 68ch en sans en rendait 79 */
+      --radius: 10px;
+      --nav-h: 58px;
     }
 
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --surface: #f6f8fa;
-      --surface2: #eaeef2;
-      --border: #d0d7de;
-      --accent: #0969da;
-      --accent-soft: #dbeafe;
-      --text: #1f2328;
-      --muted: #57606a;
-      --tag-bg: #dbeafe;
-      --tag-border: #93c5fd;
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg:        #fcfbf9;   /* papier chaud, pas un blanc d'écran */
+      --bg-soft:   #f6f4f0;
+      --surface:   #ffffff;
+      --surface2:  #f3f1ec;
+      --border:    #e4dfd6;
+      --border-br: #cfc8bb;
+      --text:      #15181c;
+      --muted:     #576271;
+      --faint:     #646e7b;
+      --accent:    #0d7a6c;
+      --accent-dim:#9ad8ce;
+      --accent-bg: #0d7a6c0f;
+      --review:    #96621a;
+      --review-bg: #96621a0f;
+      --nav-ink:  #44505f;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-h) + var(--s5));  /* ancres sous la barre fixe */
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
+      font-family: var(--sans);
+      font-size: 1.0625rem;              /* 17px : confort de lecture longue */
+      line-height: 1.65;
+      font-feature-settings: "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a:hover { text-decoration: underline; text-underline-offset: .18em; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+    ::selection { background: var(--accent-dim); color: var(--text); }
 
-    /* ── NAV ── */
+    /* ═══ BARRE DE NAVIGATION ══════════════════════════════════════════════ */
+    #progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 2px; width: 0;
+      background: var(--accent);
+      transition: width .1s linear;
+    }
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--surface);
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--s4);
+      height: var(--nav-h);
+      padding: 0 var(--s5);
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: saturate(150%) blur(12px);
+      -webkit-backdrop-filter: saturate(150%) blur(12px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 56px;
-      gap: 1rem;
     }
     nav .logo {
-      font-weight: 700;
-      font-size: 1rem;
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: .01em;
       color: var(--text);
-      letter-spacing: .02em;
       flex-shrink: 0;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
+    nav ul { list-style: none; display: flex; gap: var(--s5); }
     nav ul li a {
-      color: var(--muted);
-      font-size: .9rem;
-      transition: color .2s;
       position: relative;
+      color: var(--nav-ink);
+      font-size: .855rem;
+      letter-spacing: .01em;
       padding-bottom: 3px;
+      transition: color .18s;
     }
     nav ul li a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 0;
-      height: 2px;
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 1.5px; border-radius: 2px;
       background: var(--accent);
-      border-radius: 999px;
-      transition: width .25s ease;
+      transition: width .22s ease;
     }
-    nav ul li a:hover {
-      color: var(--text);
-      text-decoration: none;
-    }
-    nav ul li a:hover::after { width: 100%; }
+    nav ul li a:hover { color: var(--text); text-decoration: none; }
+    nav ul li a:hover::after,
+    nav ul li a[aria-current="true"]::after { width: 100%; }
+    nav ul li a[aria-current="true"] { color: var(--text); }
 
-    .nav-controls {
-      display: flex;
-      gap: .5rem;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    /* ── TOGGLE BUTTONS ── */
+    .nav-controls { display: flex; gap: var(--s2); align-items: center; flex-shrink: 0; }
     #theme-toggle, #lang-toggle {
-      background: var(--surface2);
+      display: flex; align-items: center; gap: .35rem;
+      padding: .3rem .7rem;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .04em;
+      color: var(--muted);
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 999px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .3rem .75rem;
-      font-size: .8rem;
-      color: var(--muted);
-      transition: background .2s, color .2s, border-color .2s;
       white-space: nowrap;
-      flex-shrink: 0;
+      transition: border-color .18s, color .18s, background .18s;
     }
-    #theme-toggle:hover, #lang-toggle:hover { border-color: var(--accent); color: var(--text); }
-
-    /* ── LAYOUT ── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 1.5rem 4rem;
+    #theme-toggle:hover, #lang-toggle:hover {
+      border-color: var(--accent); color: var(--accent); background: var(--accent-bg);
     }
 
-    section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
-    section:last-child { border-bottom: none; }
+    /* ═══ TRAME ════════════════════════════════════════════════════════════ */
+    main { max-width: 1080px; margin: 0 auto; padding: 0 var(--s5) var(--s8); }
+    section { padding: var(--s8) 0 0; }
+    section > p, #about p { max-width: var(--measure); }
 
     h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      padding-bottom: .5rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-
-    h3 {
-      font-size: 1.05rem;
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 2.4vw, 1.6rem);
       font-weight: 600;
-      color: var(--text);
-      margin-bottom: .25rem;
+      letter-spacing: -.01em;
+      text-wrap: balance;
+      margin-bottom: var(--s5);
+      padding-bottom: var(--s2);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: var(--s3);
+    }
+    h2::after {                            /* filet d'accent court, pas un soulignement complet */
+      content: ''; flex: 0 0 auto;
+      width: 28px; height: 2px; border-radius: 2px;
+      background: var(--accent);
+      margin-bottom: .35em;
+    }
+    h3 { font-size: 1rem; font-weight: 600; letter-spacing: -.005em; margin-bottom: var(--s1); }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--s3);
     }
 
-    /* ── HERO ── */
+    /* ═══ EN-TÊTE ══════════════════════════════════════════════════════════ */
     #hero {
-      display: flex;
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
       align-items: center;
-      gap: 2.5rem;
-      padding-top: 3rem;
+      gap: var(--s6);
+      padding: var(--s7) 0 var(--s7);
       border-bottom: 1px solid var(--border);
     }
+    #hero::before {                        /* trame de points discrète : évoque la donnée */
+      content: ''; position: absolute;
+      top: 0; bottom: 0; left: -8vw; right: -8vw;
+      background-image: radial-gradient(var(--border-br) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: .4;
+      mask-image: radial-gradient(60% 75% at 22% 50%, #000 15%, transparent 72%);
+      -webkit-mask-image: radial-gradient(60% 75% at 22% 50%, #000 15%, transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #hero > * { position: relative; z-index: 1; }
     #hero img {
-      width: 160px;
-      height: 200px;
-      border-radius: 16px;
-      border: 2px solid var(--border);
-      object-fit: cover;
-      object-position: top center;
-      flex-shrink: 0;
+      width: 150px; height: 188px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-br);
+      object-fit: cover; object-position: top center;
       background: var(--surface2);
-      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+      box-shadow: 0 10px 30px -12px rgba(0,0,0,.55);
     }
-    .avatar-placeholder {
-      width: 160px;
-      height: 200px;
-      border-radius: 16px;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      background: linear-gradient(145deg, var(--accent-soft), var(--accent));
-      box-shadow: 0 4px 24px rgba(0,0,0,.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: .05em;
-      user-select: none;
-    }
+    #hero .info { min-width: 0; }   /* la colonne doit pouvoir se reduire */
     #hero .info h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1.2;
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4.4vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      text-wrap: balance;
     }
     #hero .info .subtitle {
-      color: var(--accent);
-      font-size: 1rem;
-      margin: .4rem 0 .8rem;
+      font-size: 1.02rem;
+      color: var(--text);
+      margin: var(--s3) 0 var(--s4);
+      max-width: 46ch;
+      text-wrap: pretty;
     }
-    #hero .info p {
+    #hero .info > p:not(.subtitle):not(.eyebrow) {
       color: var(--muted);
-      font-size: .95rem;
-      max-width: 520px;
+      font-size: .97rem;
+      max-width: 58ch;
+      text-wrap: pretty;
     }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: 1.2rem;
-    }
+
+    .badges { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s5); }
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .3rem .75rem;
+      padding: .26rem .66rem;
       border-radius: 999px;
-      font-size: .8rem;
-      color: var(--accent);
-      background: var(--tag-bg);
-      border: 1px solid var(--tag-border);
-    }
-
-    /* ── ABOUT ── */
-    #about p {
+      font-size: .775rem;
       color: var(--muted);
-      max-width: 720px;
-      margin-bottom: .8rem;
-    }
-
-    /* ── PUBLICATIONS ── */
-    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
-    .pub-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem 1.4rem;
-      transition: border-color .2s;
     }
-    .pub-card:hover { border-color: var(--accent); }
-    .pub-card .pub-journal {
-      font-size: .8rem;
+    .badge:last-child {                    /* la disponibilité est l'information actionnable */
+      color: var(--accent);
+      background: var(--accent-bg);
+      border-color: var(--accent-dim);
+      font-weight: 500;
+    }
+
+    /* ═══ À PROPOS ═════════════════════════════════════════════════════════ */
+    #about p { color: var(--muted); margin-bottom: var(--s4); text-wrap: pretty; }
+    #about p strong, #about p em { color: var(--text); }
+    #about p em { font-family: var(--serif); font-style: italic; }
+
+    .section-intro {
       color: var(--muted);
-      margin-bottom: .3rem;
+      font-size: .935rem;
+      max-width: var(--measure);
+      margin-bottom: var(--s5);
+      text-wrap: pretty;
+    }
+
+    /* ═══ FICHES (publications, code) ══════════════════════════════════════ */
+    .pub-list { display: flex; flex-direction: column; gap: var(--s4); }
+    .pub-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--border-br);
+      border-radius: var(--radius);
+      padding: var(--s5) var(--s5) var(--s5) calc(var(--s5) - 1px);
+      transition: border-color .2s, transform .2s;
+    }
+    .pub-card:hover { border-left-color: var(--accent); transform: translateX(2px); }
+    .pub-card .pub-journal {
+      font-family: var(--mono);
+      font-size: .715rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: var(--s2);
+      font-variant-numeric: tabular-nums;
     }
     .pub-card .pub-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
       font-weight: 600;
-      font-size: .97rem;
+      line-height: 1.35;
+      letter-spacing: -.01em;
       color: var(--text);
-      margin-bottom: .4rem;
+      margin-bottom: var(--s3);
+      text-wrap: pretty;
     }
     .pub-card .pub-meta {
-      font-size: .82rem;
+      font-size: .835rem;
       color: var(--muted);
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
+      display: flex; gap: var(--s4); flex-wrap: wrap; align-items: baseline;
     }
-    .pub-card .pub-meta a {
-      color: var(--accent);
-      font-size: .82rem;
-    }
-
-    /* ── EXPERIENCE ── */
-    .timeline { position: relative; padding-left: 1.5rem; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 4px; top: 6px; bottom: 6px;
-      width: 2px;
-      background: var(--border);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2.2rem;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -1.5rem;
-      top: 6px;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-    }
-    .timeline-item .period {
-      font-size: .78rem;
-      color: var(--muted);
-      margin-bottom: .2rem;
-    }
-    .timeline-item .org {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      margin-bottom: .4rem;
-    }
-    .org-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      object-fit: contain;
-      background: #fff;
-      border: 1px solid var(--border);
-      padding: 3px;
-      flex-shrink: 0;
-    }
-    .org-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.3;
-    }
-    .org-name {
-      font-size: .88rem;
-      color: var(--accent);
-    }
-    .org-supervised {
-      font-size: .78rem;
-      color: var(--muted);
-      font-style: italic;
-    }
-    .timeline-item ul {
-      padding-left: 1.2rem;
+    .pub-card .pub-meta strong { color: var(--text); font-weight: 600; }
+    .pub-card .pub-meta a { font-family: var(--mono); font-size: .76rem; overflow-wrap: anywhere; }
+    .pub-card .pub-meta a::after { content: ' \2197'; font-size: .9em; opacity: .65; }
+    .pub-card .pub-meta--stacked { display: block; }
+    .pub-card .pub-desc {
       color: var(--muted);
       font-size: .9rem;
-    }
-    .timeline-item ul li { margin-bottom: .2rem; }
-    .tools {
-      margin-top: .6rem;
-      font-size: .8rem;
-      color: var(--muted);
-      font-style: italic;
+      max-width: var(--measure);
+      margin-bottom: var(--s3);
+      text-wrap: pretty;
     }
 
-    /* ── SKILLS ── */
+    /* article en révision : statut distinct, pas de confusion avec le publié */
+    .pub-card--review { border-left-color: var(--review); border-style: solid dashed dashed dashed; }
+    .pub-card--review .pub-journal { color: var(--review); }
+    .pub-card--review:hover { border-left-color: var(--review); }
+
+    .repo-name {
+      font-family: var(--mono);
+      font-size: .97rem;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    /* ═══ PARCOURS ═════════════════════════════════════════════════════════ */
+    /* La gouttiere de gauche porte les logos ; le filet du temps passe a sa droite.
+       --tl-gutter = largeur totale reservee, --tl-logo = taille du logo,
+       --tl-rule   = position du filet depuis le bord gauche de la frise. */
+    .timeline {
+      position: relative;
+      --tl-logo-w: 100px;   /* les logos sont larges (2:1 a 3,4:1) : on contraint */
+      --tl-logo-h: 50px;    /* la largeur ET la hauteur, sans cadre carre        */
+      --tl-rule: 116px;
+      --tl-gutter: 140px;
+      padding-left: var(--tl-gutter);
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: var(--tl-rule); top: .55rem; bottom: .55rem;
+      width: 1px; background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: var(--s6); }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {                 /* la pastille marque l'instant sur le filet */
+      content: ''; position: absolute;
+      left: calc(var(--tl-rule) - var(--tl-gutter) - 3px);
+      top: .6rem; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--bg); border: 1.5px solid var(--border-br);
+    }
+    .timeline-item:first-child::before { background: var(--accent); border-color: var(--accent); }
+    .timeline-item .period {
+      font-family: var(--mono);
+      font-size: .715rem;
+      letter-spacing: .05em;
+      color: var(--faint);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: var(--s1);
+    }
+    .timeline-item .org { display: flex; align-items: center; gap: var(--s2); margin: var(--s2) 0 var(--s3); }
+    /* Pas de cadre : le logo respire a sa taille propre, centre verticalement sur
+       le nom de la structure. Les quatre fichiers sont de l'encre sombre sur fond
+       transparent, donc en theme sombre on les eclaircit en conservant la teinte. */
+    .timeline-item .org { position: relative; }
+    .org-logo {
+      position: absolute; left: calc(-1 * var(--tl-gutter));
+      top: 50%; transform: translateY(-50%);
+      width: auto; height: auto;
+      max-width: var(--tl-logo-w); max-height: var(--tl-logo-h);
+      object-fit: contain;
+      background: none; border: 0; padding: 0; border-radius: 0;
+      filter: invert(1) hue-rotate(180deg);
+    }
+    :root[data-theme="light"] .org-logo,
+    :root[data-theme="light"] .inst-logo { filter: none; }
+    .org-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .org-name { font-size: .855rem; color: var(--muted); }
+    .org-supervised { font-size: .76rem; color: var(--faint); font-style: italic; }
+    .timeline-item ul { padding-left: var(--s4); color: var(--muted); font-size: .9rem; max-width: var(--measure); }
+    .timeline-item ul li { margin-bottom: var(--s1); padding-left: .15rem; }
+    .timeline-item ul li::marker { color: var(--border-br); }
+    .timeline-item ul li strong { color: var(--text); font-weight: 500; }
+    .tools {
+      margin-top: var(--s3);
+      font-family: var(--mono);
+      font-size: .715rem;
+      letter-spacing: .02em;
+      color: var(--faint);
+    }
+
+    /* ═══ COMPÉTENCES ══════════════════════════════════════════════════════
+       Groupées par domaine. Les approches portent des étiquettes lisibles ;
+       les outils restent une ligne technique en retrait, pour qu'un recruteur
+       lise d'abord ce qui est fait et seulement ensuite avec quoi. */
+    #skills { --measure: 100%; }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: var(--s5) var(--s6);
     }
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem;
-    }
+    .skill-group { background: none; border: 0; padding: 0; }
+    .skill-group .tools { margin-top: var(--s3); line-height: 1.7; }
     .skill-group h3 {
-      font-size: .9rem;
-      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: .8rem;
+      color: var(--muted);
+      padding-bottom: var(--s2);
+      margin-bottom: var(--s3);
+      border-bottom: 1px solid var(--border);
     }
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-    }
+    .tag-list { display: flex; flex-wrap: wrap; gap: .3rem .45rem; }
     .tag {
-      padding: .2rem .6rem;
-      border-radius: 4px;
       font-size: .8rem;
+      color: var(--muted);
       background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text);
+      border: 0;
+      border-radius: 4px;
+      padding: .12rem .45rem;
     }
 
-    /* ── EDUCATION ── */
-    .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+    /* ═══ FORMATION ════════════════════════════════════════════════════════ */
+    .edu-list { display: flex; flex-direction: column; }
     .edu-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s4);
+      background: none; border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      padding: var(--s4) 0;
     }
-    .edu-card .edu-left {
-      display: flex;
-      align-items: flex-start;
-      gap: .75rem;
-    }
+    .edu-card:last-child { border-bottom: 1px solid var(--border); }
+    /* Le bloc de gauche prend la place disponible : sans cela, le logo SVG (sans
+       dimension intrinseque) ecrasait la colonne de texte a sa largeur minimale
+       et le diplome se cassait sur plusieurs lignes. */
+    .edu-card .edu-left { display: flex; align-items: center; gap: var(--s4); flex: 1 1 auto; min-width: 0; }
+    .edu-card .edu-left > div { min-width: 0; }
+    .inst-logo { flex: 0 0 auto; }
     .inst-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
+      width: auto; height: auto;
+      max-width: 104px; max-height: 50px;
       object-fit: contain;
-      background: #fff;
-      border: 1px solid var(--border);
-      padding: 3px;
+      background: none; border: 0; padding: 0; border-radius: 0;
       flex-shrink: 0;
-      margin-top: .1rem;
+      filter: invert(1) hue-rotate(180deg);
     }
-    .edu-card .degree {
-      font-weight: 600;
-      font-size: .97rem;
-    }
-    .edu-card .mention {
-      font-size: .85rem;
-      color: var(--accent);
-      font-style: italic;
-    }
-    .edu-card .institution {
-      font-size: .85rem;
-      color: var(--muted);
-      margin-top: .2rem;
-    }
+    .edu-card .degree { font-family: var(--serif); font-size: 1.04rem; font-weight: 600; }
+    .edu-card .mention { font-size: .82rem; color: var(--accent); }
+    .edu-card .institution { font-size: .835rem; color: var(--muted); margin-top: .1rem; }
     .edu-card .period {
-      font-size: .82rem;
-      color: var(--muted);
-      white-space: nowrap;
-      padding-top: .1rem;
+      font-family: var(--mono); font-size: .76rem; color: var(--faint);
+      white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: .35rem;
     }
 
-    /* ── CONTACT ── */
-    #contact .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    /* ═══ CONTACT ══════════════════════════════════════════════════════════ */
+    #contact .contact-grid { display: flex; flex-wrap: wrap; gap: var(--s3); }
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
+      display: flex; align-items: center; gap: var(--s2);
+      padding: .6rem 1.05rem;
+      font-size: .875rem;
+      color: var(--muted);
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: .7rem 1.2rem;
-      font-size: .9rem;
-      color: var(--muted);
-      transition: border-color .2s;
+      border-radius: 999px;
+      transition: border-color .18s, color .18s, background .18s;
     }
-    .contact-item:hover { border-color: var(--accent); color: var(--text); text-decoration: none; }
+    .contact-item:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-bg); text-decoration: none;
+    }
+    .contact-item:first-child {            /* le courriel est l'action attendue */
+      color: var(--bg); background: var(--accent); border-color: var(--accent); font-weight: 500;
+    }
+    .contact-item:first-child:hover { filter: brightness(1.08); color: var(--bg); }
     .contact-item svg { flex-shrink: 0; }
 
-    /* ── FOOTER ── */
+    /* ═══ PIED ═════════════════════════════════════════════════════════════ */
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: var(--s6) var(--s5);
+      margin-top: var(--s8);
       color: var(--muted);
-      font-size: .8rem;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .04em;
       border-top: 1px solid var(--border);
     }
 
+    /* ═══ RESPONSIVE ═══════════════════════════════════════════════════════ */
+    @media (max-width: 860px) {
+      :root { --s7: 2.5rem; --s8: 3.5rem; }
+      main { padding-left: var(--s4); padding-right: var(--s4); }
+      nav { padding: 0 var(--s4); }
+      nav ul { gap: var(--s4); }
+    }
     @media (max-width: 640px) {
-      /* ── NAV: 2-row layout ── */
       nav {
-        flex-wrap: wrap;
-        height: auto;
-        padding: .5rem 1rem .25rem;
-        gap: .25rem .5rem;
+        flex-wrap: wrap; height: auto; position: sticky;
+        padding: .45rem var(--s4) .2rem;
+        gap: .2rem var(--s3);
       }
       nav .logo { flex: 1; font-size: .95rem; }
       nav ul {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        padding: .35rem 0 .45rem;
-        gap: 1.4rem;
-        scrollbar-width: none;
+        order: 3; width: 100%;
+        overflow-x: auto; scrollbar-width: none;
+        padding: .3rem 0 .4rem; gap: 1.25rem;
+        -webkit-overflow-scrolling: touch;
       }
       nav ul::-webkit-scrollbar { display: none; }
-      nav ul li a {
-        font-size: .85rem;
-        white-space: nowrap;
-      }
-      main { padding-top: 96px; }
-
-      /* ── REST ── */
-      #hero { flex-direction: column; text-align: center; }
-      #hero .info p { max-width: 100%; }
+      html { scroll-padding-top: 108px; }
+      #hero { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: var(--s5); }
+      #hero .info .subtitle, #hero .info > p:not(.subtitle):not(.eyebrow) { max-width: 100%; }
       .badges { justify-content: center; }
-      .edu-card { flex-direction: column; }
-      .edu-card .edu-left { flex-direction: row; }
+      .eyebrow { text-align: center; }
+      .timeline { --tl-logo-w: 56px; --tl-logo-h: 30px; --tl-rule: 66px; --tl-gutter: 82px; }
+      .inst-logo { max-width: 76px; max-height: 38px; }
+      /* en colonne, align-items:flex-start de la regle de base reduirait la
+         colonne de texte a sa largeur minimale : on etire. */
+      .edu-card { flex-direction: column; align-items: stretch; }
+      .edu-card .period { padding-top: 0; }
+      .pub-card .pub-meta { gap: var(--s2) var(--s3); }
+    }
+
+    /* ═══ PRÉFÉRENCES UTILISATEUR ══════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .pub-card:hover { transform: none; }
+    }
+
+    /* ═══ IMPRESSION ═══════════════════════════════════════════════════════ */
+    @media print {
+      nav, #progress, .nav-controls, #hero::before { display: none !important; }
+      body { background: #fff; color: #000; font-size: 10.5pt; }
+      main { max-width: none; padding: 0; }
+      section { padding: 1.2rem 0 0; break-inside: avoid; }
+      .pub-card, .edu-card, .timeline-item { break-inside: avoid; border-color: #bbb; }
+      .pub-card { background: none; }
+      a { color: #000; text-decoration: underline; }
+      .pub-card .pub-meta a::after { content: ' (' attr(href) ')'; font-size: .85em; }
+      footer { border-color: #bbb; }
     }
   </style>
 </head>
 <body>
+
+<div id="progress" aria-hidden="true"></div>
 
 <!-- Navigation -->
 <nav>
@@ -479,8 +570,10 @@
   <ul>
     <li><a href="#about"        data-i18n="nav.about">About</a></li>
     <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="#projects"     data-i18n="nav.projects">Code</a></li>
     <li><a href="#experience"   data-i18n="nav.experience">Experience</a></li>
     <li><a href="#skills"       data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#education"    data-i18n="nav.education">Education</a></li>
     <li><a href="#contact"      data-i18n="nav.contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
@@ -506,19 +599,20 @@
   <section id="hero">
     <img src="3d-character_profile.jpg" alt="Rayane Achebouche" />
     <div class="info">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Bioinformatics &middot; Predictive Toxicology</p>
       <h1>Rayane Achebouche</h1>
-      <p class="subtitle" data-i18n="hero.subtitle">PhD Student in Bioinformatics &mdash; Universit&eacute; Paris Cit&eacute;</p>
-      <p data-i18n="hero.desc">Applying artificial intelligence to study the impact of endocrine disruptors
-        on breast cancer onset and progression. My work combines transcriptomics and
-        high-throughput phenotypic profiling (cell morphological data) to build predictive
-        models of chemical risk.</p>
+      <p class="subtitle" data-i18n="hero.subtitle">PhD in Bioinformatics &mdash; AI linking molecular structure to biological effect</p>
+      <p data-i18n="hero.desc">I build models that connect the structure of a small molecule to the
+        effect it has on a cell &mdash; toxicity, receptor binding, morphological phenotype &mdash;
+        across transcriptomics, high-content imaging and molecular graphs. My doctoral work
+        applies this to identifying chemicals that raise breast cancer risk, without animal testing.</p>
       <div class="badges">
-        <span class="badge" data-i18n="badge.ed">Endocrine Disruptors</span>
-        <span class="badge" data-i18n="badge.bc">Breast Cancer</span>
+        <span class="badge" data-i18n="badge.tox">Predictive Toxicology / NAMs</span>
         <span class="badge">Transcriptomics</span>
-        <span class="badge">Phenotypic Profiling</span>
+        <span class="badge">Cell Painting</span>
         <span class="badge">Graph Neural Networks</span>
         <span class="badge">Cheminformatics</span>
+        <span class="badge" data-i18n="badge.avail">Available from January 2027</span>
       </div>
     </div>
   </section>
@@ -526,11 +620,14 @@
   <!-- About -->
   <section id="about">
     <h2 data-i18n="about.heading">About</h2>
-    <p data-i18n="about.p1">I am a PhD student in Bioinformatics at <strong>Universit&eacute; Paris Cit&eacute;</strong>,
-      working on the impact of <strong>endocrine disruptors</strong> on breast cancer onset and progression
-      using artificial intelligence. My doctoral research integrates <strong>transcriptomics</strong> and
-      <strong>high-throughput phenotypic profiling</strong> (cell morphological data) to build predictive
-      models capable of identifying chemical risk factors for breast cancer.</p>
+    <p data-i18n="about.p1">I am a PhD student in Bioinformatics at <strong>Universit&eacute; Paris Cit&eacute;</strong>
+      (INSERM U1133, supervised by Pr. Olivier Taboureau). My thesis asks which environmental
+      chemicals raise breast cancer risk, and answers it by integrating two kinds of data that are
+      rarely analysed together: <strong>transcriptomic responses</strong> to chemical exposure and
+      <strong>high-content cell imaging</strong>. The approach is comparative &mdash; confronting the
+      signature a compound leaves in a cell line with the deregulation measured in tumours, then
+      ranking suspected carcinogens by how closely they resemble those already established, so that
+      a chemical can be flagged without an animal test.</p>
     <p data-i18n="about.p2">Prior to my PhD, I worked as a <strong>Research Engineer at &Eacute;cole Polytechnique</strong>
       (Laboratoire d&rsquo;Optique et Biosciences, 2021&ndash;2023), where I developed custom
       <strong>Graph Neural Networks</strong> to predict protein-ligand binding affinity and conducted
@@ -546,26 +643,45 @@
     <h2>Publications</h2>
     <div class="pub-list">
 
-      <div class="pub-card">
-        <div class="pub-journal">Scientific Reports &middot; 2025</div>
-        <div class="pub-title">
-          Assessment of chemical risk factor for breast cancer based on gene expression profiles
+      <div class="pub-card pub-card--review">
+        <div class="pub-journal" data-i18n="pub.altex26.journal">ALTEX &middot; under review</div>
+        <div class="pub-title" data-i18n="pub.altex26.title">
+          A Cell Painting-based tool for the risk assessment of mammary carcinogens and endocrine disruptors
         </div>
         <div class="pub-meta">
-          <span>Rayane Achebouche, Olivier Taboureau</span>
-          <a href="https://doi.org/10.1038/s41598-025-27732-0" target="_blank" rel="noopener">
-            doi:10.1038/s41598-025-27732-0
+          <span><strong>Rayane Achebouche</strong>, Olivier Taboureau</span>
+          <a href="https://doi.org/10.64898/2026.09.04.749408" target="_blank" rel="noopener">
+            doi:10.64898/2026.09.04.749408
+          </a>
+          <a href="https://github.com/rachebouche/mammary-carcinogenicity-cellpainting" target="_blank" rel="noopener">
+            code &amp; results
           </a>
         </div>
       </div>
 
       <div class="pub-card">
-        <div class="pub-journal">Nucleic Acids Research &middot; 2024</div>
+        <div class="pub-journal">Scientific Reports &middot; 2025 &middot; 15, 43983</div>
+        <div class="pub-title">
+          Assessment of chemical risk factor for breast cancer based on gene expression profiles
+        </div>
+        <div class="pub-meta">
+          <span><strong>Rayane Achebouche</strong>, Olivier Taboureau</span>
+          <a href="https://doi.org/10.1038/s41598-025-27732-0" target="_blank" rel="noopener">
+            doi:10.1038/s41598-025-27732-0
+          </a>
+          <a href="https://github.com/rachebouche/breast-cancer-risk-assessment-transcriptomics" target="_blank" rel="noopener">
+            code &amp; results
+          </a>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-journal">Nucleic Acids Research &middot; 2024 &middot; 52, W507&ndash;W512</div>
         <div class="pub-title">
           Pred-O3, a web server to predict molecules, olfactory receptors and odor relationships
         </div>
         <div class="pub-meta">
-          <span>Guillaume Ollitrault, Rayane Achebouche, Antoine Dreux, Samuel Murail, Karine Audouze, Anne Tromelin, Olivier Taboureau</span>
+          <span>Guillaume Ollitrault, <strong>Rayane Achebouche</strong>, Antoine Dreux, Samuel Murail, Karine Audouze, Anne Tromelin, Olivier Taboureau</span>
           <a href="https://doi.org/10.1093/nar/gkae305" target="_blank" rel="noopener">
             doi:10.1093/nar/gkae305
           </a>
@@ -573,12 +689,12 @@
       </div>
 
       <div class="pub-card">
-        <div class="pub-journal">Scientific Reports &middot; 2022</div>
+        <div class="pub-journal">Scientific Reports &middot; 2022 &middot; 12, 18817</div>
         <div class="pub-title">
           Application of artificial intelligence to decode the relationships between smell, olfactory receptors and small molecules
         </div>
         <div class="pub-meta">
-          <span>Rayane Achebouche, Anne Tromelin, Karine Audouze, Olivier Taboureau</span>
+          <span><strong>Rayane Achebouche</strong>, Anne Tromelin, Karine Audouze, Olivier Taboureau</span>
           <a href="https://doi.org/10.1038/s41598-022-23176-y" target="_blank" rel="noopener">
             doi:10.1038/s41598-022-23176-y
           </a>
@@ -591,10 +707,61 @@
           Computational systems biology as an animal-free approach to characterize toxicological effects of persistent organic pollutants
         </div>
         <div class="pub-meta">
-          <span>Qier Wu, Rayane Achebouche, Karine Audouze</span>
+          <span>Qier Wu, <strong>Rayane Achebouche</strong>, Karine Audouze</span>
           <a href="https://doi.org/10.14573/altex.1910161" target="_blank" rel="noopener">
             doi:10.14573/altex.1910161
           </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects / Code -->
+  <section id="projects">
+    <h2 data-i18n="proj.heading">Code &amp; Data</h2>
+    <p class="section-intro" data-i18n="proj.intro">Every published analysis is released as a reproducible repository:
+      versioned download scripts, frozen environments, and a stated list of what the work does
+      <em>not</em> show.</p>
+    <div class="pub-list">
+
+      <div class="pub-card">
+        <div class="pub-journal">GitHub &middot; Python, R &middot; MIT</div>
+        <div class="pub-title repo-name">breast-cancer-risk-assessment-transcriptomics</div>
+        <div class="pub-meta pub-meta--stacked">
+          <p class="pub-desc"
+             data-i18n="proj.1.desc">Ranks chemicals as candidate breast cancer risk factors by comparing
+            their transcriptional footprint in MCF7 (LINCS L1000) with the deregulation measured between
+            1,092 TCGA-BRCA tumours and GTEx normal breast tissue. Includes a similarity threshold
+            calibrated against a null distribution of random profiles, and WGCNA co-expression networks
+            linking compounds to gene modules.</p>
+          <a href="https://github.com/rachebouche/breast-cancer-risk-assessment-transcriptomics" target="_blank" rel="noopener" data-i18n="proj.link">View repository</a>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-journal">GitHub &middot; Python &middot; MIT &middot; Zenodo</div>
+        <div class="pub-title repo-name">mammary-carcinogenicity-cellpainting</div>
+        <div class="pub-meta pub-meta--stacked">
+          <p class="pub-desc"
+             data-i18n="proj.2.desc">Morphological profiling of JUMP Cell Painting data and a
+            Guilt-By-Association scoring framework that ranks suspected mammary carcinogens, applied
+            prospectively to endocrine-disruptor candidates from EDLists. Five similarity metrics,
+            three feature representations, leave-one-out validation and a feature-selection
+            stability diagnostic.</p>
+          <a href="https://github.com/rachebouche/mammary-carcinogenicity-cellpainting" target="_blank" rel="noopener" data-i18n="proj.link">View repository</a>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-journal" data-i18n="proj.3.journal">Web server &middot; Nucleic Acids Research 2024</div>
+        <div class="pub-title">Pred-O3</div>
+        <div class="pub-meta pub-meta--stacked">
+          <p class="pub-desc"
+             data-i18n="proj.3.desc">A deployed web server predicting relationships between molecules,
+            olfactory receptors and odours &mdash; co-authored, and the proof that the models leave the
+            notebook and reach users.</p>
+          <a href="https://doi.org/10.1093/nar/gkae305" target="_blank" rel="noopener">doi:10.1093/nar/gkae305</a>
         </div>
       </div>
 
@@ -610,7 +777,7 @@
         <div class="period" data-i18n="exp.1.period">August 2021 &mdash; February 2023</div>
         <h3 data-i18n="exp.1.title">Research Engineer</h3>
         <div class="org">
-          <img class="org-logo" src="images/logos/ecole-polytechnique.svg" alt="Ecole Polytechnique" onerror="this.style.display='none'">
+          <img class="org-logo" src="images/logos/ecole-polytechnique-trim.png" alt="Ecole Polytechnique" onerror="this.style.display='none'">
           <span class="org-name">Ecole Polytechnique &mdash; Laboratoire d&rsquo;Optique et Biosciences (L.O.B)</span>
         </div>
         <ul>
@@ -618,14 +785,14 @@
           <li data-i18n="exp.1.li2">Structure-based virtual screening using <strong>Smina</strong> for the identification of novel ThyX inhibitors</li>
           <li data-i18n="exp.1.li3">Laureate of the <strong>X-Grant prize</strong> &mdash; X-Novation entrepreneurship program</li>
         </ul>
-        <div class="tools">OpenBabel &bull; Smina &bull; ADT &bull; PyMol &bull; PyTorch &bull; PyTorch Geometric &bull; Scikit-Learn &bull; RDKit</div>
+        <div class="tools">Smina &bull; OpenBabel &bull; PyMol &bull; PyTorch &bull; PyTorch Geometric &bull; scikit-learn &bull; RDKit</div>
       </div>
 
       <div class="timeline-item">
         <div class="period" data-i18n="exp.2.period">January 2021 &mdash; July 2021</div>
         <h3 data-i18n="exp.2.title">Research Engineer</h3>
         <div class="org">
-          <img class="org-logo" src="images/logos/INSERM_Logo.png" alt="INSERM" onerror="this.style.display='none'">
+          <img class="org-logo" src="images/logos/inserm-trim.png" alt="INSERM" onerror="this.style.display='none'">
           <span class="org-name">INSERM UMR S1124</span>
         </div>
         <ul>
@@ -633,14 +800,14 @@
           <li data-i18n="exp.2.li2">Development of integrative models based on biological networks for prediction purposes</li>
           <li data-i18n="exp.2.li3">Collaborative scientific writing</li>
         </ul>
-        <div class="tools">Cytoscape &bull; Python &bull; Pandas &bull; NumPy &bull; PubChemPy</div>
+        <div class="tools">Cytoscape &bull; Python &bull; pandas &bull; NumPy &bull; PubChemPy</div>
       </div>
 
       <div class="timeline-item">
         <div class="period" data-i18n="exp.3.period">January 2020 &mdash; June 2020 &mdash; <em>Intern (6 months)</em></div>
         <h3 data-i18n="exp.3.title">Research Scientist Intern</h3>
         <div class="org">
-          <img class="org-logo" src="images/logos/INSERM_Logo.png" alt="INSERM" onerror="this.style.display='none'">
+          <img class="org-logo" src="images/logos/inserm-trim.png" alt="INSERM" onerror="this.style.display='none'">
           <span class="org-text">
             <span class="org-name">INSERM ERL U1133</span>
             <span class="org-supervised" data-i18n="exp.3.supervised">supervised by Pr. Taboureau</span>
@@ -650,16 +817,16 @@
           <li data-i18n="exp.3.li1">Database construction via web-scraping</li>
           <li data-i18n="exp.3.li2">Generation and analysis of ML/DL multi-label classification models: RF, MLP, CNN, GCN</li>
           <li data-i18n="exp.3.li3">Molecular representations: fingerprints, molecular descriptors, molecular graphs</li>
-          <li data-i18n="exp.3.li4">Dimensionality reduction and chemical space visualization (UMAP)</li>
+          <li data-i18n="exp.3.li4">Dimensionality reduction and clustering of large compound sets (UMAP)</li>
         </ul>
-        <div class="tools">Python &bull; BeautifulSoup &bull; PubChemPy &bull; TensorFlow &bull; DeepChem &bull; Scikit-Learn &bull; RDKit &bull; UMAP &bull; Seaborn</div>
+        <div class="tools">Python &bull; PubChemPy &bull; TensorFlow &bull; DeepChem &bull; scikit-learn &bull; RDKit &bull; UMAP</div>
       </div>
 
       <div class="timeline-item">
         <div class="period" data-i18n="exp.4.period">April 2019 &mdash; June 2019 &mdash; <em>Intern (2 months)</em></div>
         <h3 data-i18n="exp.4.title">Research Scientist Intern</h3>
         <div class="org">
-          <img class="org-logo" src="images/logos/INSERM_Logo.png" alt="INSERM" onerror="this.style.display='none'">
+          <img class="org-logo" src="images/logos/inserm-trim.png" alt="INSERM" onerror="this.style.display='none'">
           <span class="org-text">
             <span class="org-name">INSERM UMR S1124</span>
             <span class="org-supervised" data-i18n="exp.4.supervised">supervised by Dr. Audouze</span>
@@ -679,75 +846,93 @@
     <div class="skills-grid">
 
       <div class="skill-group">
-        <h3>Deep Learning</h3>
+        <h3>Predictive Toxicology &amp; NAMs</h3>
         <div class="tag-list">
-          <span class="tag">PyTorch</span>
-          <span class="tag">PyTorch Geometric</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">DeepChem</span>
-          <span class="tag">Graph Neural Networks</span>
-          <span class="tag">CNN</span>
-          <span class="tag">MLP</span>
+          <span class="tag">Chemical risk assessment</span>
+          <span class="tag">Animal-free approaches (NAMs)</span>
+          <span class="tag">Read-across &amp; guilt-by-association</span>
+          <span class="tag">QSAR</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <h3>Machine Learning</h3>
+        <h3>Transcriptomics &amp; Omics Integration</h3>
         <div class="tag-list">
-          <span class="tag">Scikit-Learn</span>
-          <span class="tag">QSAR</span>
-          <span class="tag">Multi-label Classification</span>
-          <span class="tag">Clustering</span>
-          <span class="tag">Dimensionality Reduction</span>
-          <span class="tag">UMAP</span>
+          <span class="tag">Bulk RNA-seq analysis</span>
+          <span class="tag">Differential expression</span>
+          <span class="tag">Over-representation analysis</span>
+          <span class="tag">Expression signatures</span>
+          <span class="tag">Co-expression networks (WGCNA)</span>
+          <span class="tag">Multimodal data integration</span>
         </div>
+        <div class="tools">LINCS L1000 &bull; TCGA &bull; GTEx &bull; edgeR &bull; gseapy &bull; PyWGCNA</div>
+      </div>
+
+      <div class="skill-group">
+        <h3>High-Content Imaging</h3>
+        <div class="tag-list">
+          <span class="tag">Cell Painting profiling</span>
+          <span class="tag">Single-cell morphological profiles</span>
+        </div>
+        <div class="tools">JUMP Cell Painting &bull; pycytominer &bull; UMAP</div>
       </div>
 
       <div class="skill-group">
         <h3>Cheminformatics</h3>
         <div class="tag-list">
-          <span class="tag">RDKit</span>
-          <span class="tag">OpenBabel</span>
-          <span class="tag">PubChemPy</span>
-          <span class="tag">Molecular Fingerprints</span>
-          <span class="tag">Molecular Graphs</span>
-          <span class="tag">Chemical Space</span>
+          <span class="tag">Molecular fingerprints &amp; descriptors</span>
+          <span class="tag">Molecular graphs</span>
+          <span class="tag">Structure&ndash;activity relationships</span>
+          <span class="tag">Compound standardisation</span>
         </div>
+        <div class="tools">RDKit &bull; OpenBabel &bull; PubChemPy &bull; DeepChem</div>
       </div>
 
       <div class="skill-group">
-        <h3>Molecular Modeling</h3>
+        <h3>Structural Modelling</h3>
         <div class="tag-list">
-          <span class="tag">Smina</span>
-          <span class="tag">Autodock / Vina</span>
-          <span class="tag">rDock</span>
-          <span class="tag">ADT</span>
-          <span class="tag">PyMol</span>
-          <span class="tag">Virtual Screening</span>
+          <span class="tag">Molecular docking</span>
+          <span class="tag">Structure-based virtual screening</span>
+          <span class="tag">Molecular dynamics</span>
+          <span class="tag">Protein&ndash;ligand binding affinity</span>
         </div>
+        <div class="tools">Smina &bull; AutoDock Vina &bull; GROMACS &bull; MDAnalysis &bull; PyMol</div>
       </div>
 
       <div class="skill-group">
-        <h3>Molecular Dynamics</h3>
+        <h3>Machine Learning &amp; Deep Learning</h3>
         <div class="tag-list">
-          <span class="tag">GROMACS</span>
-          <span class="tag">VMD</span>
-          <span class="tag">MDAnalysis</span>
+          <span class="tag">Graph neural networks</span>
+          <span class="tag">Convolutional neural networks</span>
+          <span class="tag">Random forests</span>
+          <span class="tag">Multi-layer perceptrons</span>
+          <span class="tag">Clustering</span>
+          <span class="tag">Dimensionality reduction</span>
         </div>
+        <div class="tools">PyTorch &bull; PyTorch Geometric &bull; scikit-learn &bull; TensorFlow</div>
       </div>
 
       <div class="skill-group">
-        <h3>Data Science &amp; Programming</h3>
+        <h3>Networks &amp; Systems Biology</h3>
         <div class="tag-list">
-          <span class="tag">Python</span>
-          <span class="tag">R</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Jupyter</span>
-          <span class="tag">Seaborn</span>
-          <span class="tag">BeautifulSoup</span>
-          <span class="tag">Cytoscape</span>
+          <span class="tag">Biological network construction</span>
+          <span class="tag">Network toxicology</span>
+          <span class="tag">Module detection</span>
+          <span class="tag">Adverse outcome pathways</span>
         </div>
+        <div class="tools">Cytoscape &bull; NetworkX</div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Engineering &amp; Reproducibility</h3>
+        <div class="tag-list">
+          <span class="tag">Reproducible pipelines</span>
+          <span class="tag">Workflow automation</span>
+          <span class="tag">Containerised environments</span>
+          <span class="tag">HPC job scheduling</span>
+          <span class="tag">Versioned data &amp; code</span>
+        </div>
+        <div class="tools">Python &bull; R &bull; Snakemake &bull; Docker &bull; Slurm &bull; Git &bull; Jupyter &bull; pandas &bull; NumPy</div>
       </div>
 
     </div>
@@ -760,18 +945,19 @@
 
       <div class="edu-card">
         <div class="edu-left">
-          <img class="inst-logo" src="images/logos/Universite-Paris-Cite_Logo.png" alt="Universit&eacute; Paris Cit&eacute;" onerror="this.style.display='none'">
+          <img class="inst-logo" src="images/logos/paris-cite-trim.png" alt="Universit&eacute; Paris Cit&eacute;" onerror="this.style.display='none'">
           <div>
             <div class="degree" data-i18n="edu.1.degree">PhD in Bioinformatics</div>
-            <div class="institution">Universit&eacute; Paris Cit&eacute;</div>
+            <div class="mention" data-i18n="edu.1.mention">defence scheduled 11 December 2026</div>
+            <div class="institution">Universit&eacute; Paris Cit&eacute; &mdash; INSERM U1133</div>
           </div>
         </div>
-        <div class="period" data-i18n="edu.1.period">2023 &mdash; present</div>
+        <div class="period" data-i18n="edu.1.period">2023 &mdash; 2026</div>
       </div>
 
       <div class="edu-card">
         <div class="edu-left">
-          <img class="inst-logo" src="images/logos/Universite-Paris-Cite_Logo.png" alt="Universit&eacute; Paris Cit&eacute;" onerror="this.style.display='none'">
+          <img class="inst-logo" src="images/logos/paris-cite-trim.png" alt="Universit&eacute; Paris Cit&eacute;" onerror="this.style.display='none'">
           <div>
             <div class="degree" data-i18n="edu.2.degree">M.Sc. Bioinformatics</div>
             <div class="mention">mention In silico Drug Design</div>
@@ -798,8 +984,7 @@
   <!-- Contact -->
   <section id="contact">
     <h2 data-i18n="contact.heading">Contact</h2>
-    <p style="color: var(--muted); margin-bottom: 1.2rem; font-size: .95rem;"
-       data-i18n="contact.intro">Feel free to reach out for research collaborations, questions, or discussions around AI and drug discovery.</p>
+    <p class="section-intro" data-i18n="contact.intro">Feel free to reach out for research collaborations, questions, or discussions around AI and drug discovery.</p>
     <div class="contact-grid">
 
       <a class="contact-item" href="mailto:achebouche.rayane@gmail.com">
@@ -832,7 +1017,7 @@
 </main>
 
 <footer>
-  <span data-i18n="footer.text">&copy; 2024 Rayane Achebouche &mdash; Universit&eacute; Paris Cit&eacute;</span>
+  <span data-i18n="footer.text">&copy; 2026 Rayane Achebouche &mdash; Universit&eacute; Paris Cit&eacute;</span>
 </footer>
 
 <script>
@@ -841,20 +1026,33 @@
     en: {
       'page.title'      : 'Rayane Achebouche \u2014 Bioinformatics PhD',
       'nav.about'       : 'About',
+      'nav.projects'    : 'Code',
+      'nav.education'   : 'Education',
       'nav.publications': 'Publications',
       'nav.experience'  : 'Experience',
       'nav.skills'      : 'Skills',
       'nav.contact'     : 'Contact',
       'theme.light'     : 'Light',
       'theme.dark'      : 'Dark',
-      'hero.subtitle'   : 'PhD Student in Bioinformatics \u2014 Universit\u00e9 Paris Cit\u00e9',
-      'hero.desc'       : 'Applying artificial intelligence to study the impact of endocrine disruptors on breast cancer onset and progression. My work combines transcriptomics and high-throughput phenotypic profiling (cell morphological data) to build predictive models of chemical risk.',
-      'badge.ed'        : 'Endocrine Disruptors',
-      'badge.bc'        : 'Breast Cancer',
+      'hero.eyebrow'    : 'Bioinformatics \u00b7 Predictive Toxicology',
+      'hero.subtitle'   : 'PhD in Bioinformatics \u2014 AI linking molecular structure to biological effect',
+      'hero.desc'       : 'I build models that connect the structure of a small molecule to the effect it has on a cell \u2014 toxicity, receptor binding, morphological phenotype \u2014 across transcriptomics, high-content imaging and molecular graphs. My doctoral work applies this to identifying chemicals that raise breast cancer risk, without animal testing.',
+      'badge.tox'       : 'Predictive Toxicology / NAMs',
+      'badge.avail'     : 'Available from January 2027',
       'about.heading'   : 'About',
-      'about.p1'        : 'I am a PhD student in Bioinformatics at <strong>Universit\u00e9 Paris Cit\u00e9</strong>, working on the impact of <strong>endocrine disruptors</strong> on breast cancer onset and progression using artificial intelligence. My doctoral research integrates <strong>transcriptomics</strong> and <strong>high-throughput phenotypic profiling</strong> (cell morphological data) to build predictive models capable of identifying chemical risk factors for breast cancer.',
+      'about.p1'        : 'I am a PhD student in Bioinformatics at <strong>Universit\u00e9 Paris Cit\u00e9</strong> (INSERM U1133, supervised by Pr. Olivier Taboureau). My thesis asks which environmental chemicals raise breast cancer risk, and answers it by integrating two kinds of data that are rarely analysed together: <strong>transcriptomic responses</strong> to chemical exposure and <strong>high-content cell imaging</strong>. The approach is comparative \u2014 confronting the signature a compound leaves in a cell line with the deregulation measured in tumours, then ranking suspected carcinogens by how closely they resemble those already established, so that a chemical can be flagged without an animal test.',
       'about.p2'        : 'Prior to my PhD, I worked as a <strong>Research Engineer at \u00c9cole Polytechnique</strong> (Laboratoire d\u2019Optique et Biosciences, 2021\u20132023), where I developed custom <strong>Graph Neural Networks</strong> to predict protein-ligand binding affinity and conducted structure-based virtual screening campaigns targeting ThyX inhibitors. I was also awarded the <strong>X-Grant prize</strong> through the X-Novation entrepreneurial program.',
       'about.p3'        : 'My earlier research at <strong>INSERM</strong> covered systems biology, network toxicology, olfactory receptor\u2013molecule relationships, and the application of deep learning to multi-target pharmacology.',
+      'proj.heading'    : 'Code &amp; Data',
+      'proj.link'       : 'View repository',
+      'proj.intro'      : 'Every published analysis is released as a reproducible repository: versioned download scripts, frozen environments, and a stated list of what the work does <em>not</em> show.',
+      'proj.1.desc'     : 'Ranks chemicals as candidate breast cancer risk factors by comparing their transcriptional footprint in MCF7 (LINCS L1000) with the deregulation measured between 1,092 TCGA-BRCA tumours and GTEx normal breast tissue. Includes a similarity threshold calibrated against a null distribution of random profiles, and WGCNA co-expression networks linking compounds to gene modules.',
+      'proj.2.desc'     : 'Morphological profiling of JUMP Cell Painting data and a Guilt-By-Association scoring framework that ranks suspected mammary carcinogens, applied prospectively to endocrine-disruptor candidates from EDLists. Five similarity metrics, three feature representations, leave-one-out validation and a feature-selection stability diagnostic.',
+      'proj.3.journal'  : 'Web server \u00b7 Nucleic Acids Research 2024',
+      'proj.3.desc'     : 'A deployed web server predicting relationships between molecules, olfactory receptors and odours \u2014 co-authored, and the proof that the models leave the notebook and reach users.',
+      'pub.altex26.journal' : 'ALTEX \u00b7 under review',
+      'pub.altex26.title'   : 'A Cell Painting-based tool for the risk assessment of mammary carcinogens and endocrine disruptors',
+      'edu.1.mention'   : 'defence scheduled 11 December 2026',
       'exp.heading'     : 'Experience',
       'exp.1.period'    : 'August 2021 \u2014 February 2023',
       'exp.1.title'     : 'Research Engineer',
@@ -872,7 +1070,7 @@
       'exp.3.li1'       : 'Database construction via web-scraping',
       'exp.3.li2'       : 'Generation and analysis of ML/DL multi-label classification models: RF, MLP, CNN, GCN',
       'exp.3.li3'       : 'Molecular representations: fingerprints, molecular descriptors, molecular graphs',
-      'exp.3.li4'       : 'Dimensionality reduction and chemical space visualization (UMAP)',
+      'exp.3.li4'       : 'Dimensionality reduction and clustering of large compound sets (UMAP)',
       'exp.4.period'    : 'April 2019 \u2014 June 2019 \u2014 <em>Intern (2 months)</em>',
       'exp.4.title'     : 'Research Scientist Intern',
       'exp.4.supervised': 'supervised by Dr. Audouze',
@@ -880,7 +1078,7 @@
       'skills.heading'  : 'Skills',
       'edu.heading'     : 'Education',
       'edu.1.degree'    : 'PhD in Bioinformatics',
-      'edu.1.period'    : '2023 \u2014 present',
+      'edu.1.period'    : '2023 \u2014 2026',
       'edu.2.degree'    : 'M.Sc. Bioinformatics',
       'edu.2.period'    : '2018 \u2014 2020',
       'edu.3.degree'    : 'B.Sc. Life Sciences',
@@ -888,25 +1086,38 @@
       'contact.heading' : 'Contact',
       'contact.intro'   : 'Feel free to reach out for research collaborations, questions, or discussions around AI and drug discovery.',
       'contact.email'   : 'Send an email',
-      'footer.text'     : '\u00a9 2024 Rayane Achebouche \u2014 Universit\u00e9 Paris Cit\u00e9',
+      'footer.text'     : '\u00a9 2026 Rayane Achebouche \u2014 Universit\u00e9 Paris Cit\u00e9',
     },
     fr: {
       'page.title'      : 'Rayane Achebouche \u2014 Doctorant en Bioinformatique',
       'nav.about'       : '\u00c0 propos',
+      'nav.projects'    : 'Code',
+      'nav.education'   : 'Formation',
       'nav.publications': 'Publications',
       'nav.experience'  : 'Exp\u00e9rience',
       'nav.skills'      : 'Comp\u00e9tences',
       'nav.contact'     : 'Contact',
       'theme.light'     : 'Clair',
       'theme.dark'      : 'Sombre',
-      'hero.subtitle'   : 'Doctorant en Bioinformatique \u2014 Universit\u00e9 Paris Cit\u00e9',
-      'hero.desc'       : "J\u2019applique l\u2019intelligence artificielle pour \u00e9tudier l\u2019impact des perturbateurs endocriniens sur l\u2019apparition et la progression du cancer du sein. Mes travaux combinent transcriptomique et profilage ph\u00e9notypique \u00e0 haut d\u00e9bit (donn\u00e9es morphologiques cellulaires) pour construire des mod\u00e8les pr\u00e9dictifs du risque chimique.",
-      'badge.ed'        : 'Perturbateurs Endocriniens',
-      'badge.bc'        : 'Cancer du Sein',
+      'hero.eyebrow'    : 'Bioinformatique \u00b7 Toxicologie pr\u00e9dictive',
+      'hero.subtitle'   : 'Doctorant en Bioinformatique \u2014 l\u2019IA entre structure mol\u00e9culaire et effet biologique',
+      'hero.desc'       : "Je construis des mod\u00e8les qui relient la structure d\u2019une petite mol\u00e9cule \u00e0 l\u2019effet qu\u2019elle produit sur une cellule \u2014 toxicit\u00e9, liaison \u00e0 un r\u00e9cepteur, ph\u00e9notype morphologique \u2014 sur plusieurs modalit\u00e9s : transcriptomique, imagerie haut-contenu, graphes mol\u00e9culaires. Ma th\u00e8se applique cela \u00e0 l\u2019identification des substances chimiques qui augmentent le risque de cancer du sein, sans recours au mod\u00e8le animal.",
+      'badge.tox'       : 'Toxicologie pr\u00e9dictive / NAMs',
+      'badge.avail'     : 'Disponible \u00e0 partir de janvier 2027',
       'about.heading'   : '\u00c0 propos',
-      'about.p1'        : "Je suis doctorant en Bioinformatique \u00e0 l\u2019<strong>Universit\u00e9 Paris Cit\u00e9</strong>, o\u00f9 je travaille sur l\u2019impact des <strong>perturbateurs endocriniens</strong> sur l\u2019apparition et la progression du cancer du sein gr\u00e2ce \u00e0 l\u2019intelligence artificielle. Mon travail doctoral int\u00e8gre la <strong>transcriptomique</strong> et le <strong>profilage ph\u00e9notypique \u00e0 haut d\u00e9bit</strong> (donn\u00e9es morphologiques cellulaires) pour construire des mod\u00e8les pr\u00e9dictifs capables d\u2019identifier les facteurs de risque chimiques du cancer du sein.",
+      'about.p1'        : "Je suis doctorant en Bioinformatique \u00e0 l\u2019<strong>Universit\u00e9 Paris Cit\u00e9</strong> (INSERM U1133, sous la direction du Pr Olivier Taboureau). Ma th\u00e8se cherche quelles substances de l\u2019environnement augmentent le risque de cancer du sein, en int\u00e9grant deux types de donn\u00e9es rarement analys\u00e9es ensemble : les <strong>r\u00e9ponses transcriptomiques</strong> \u00e0 l\u2019exposition chimique et l\u2019<strong>imagerie cellulaire haut-contenu</strong>. La d\u00e9marche est comparative \u2014 confronter la signature qu\u2019un compos\u00e9 laisse dans une lign\u00e9e cellulaire \u00e0 la d\u00e9r\u00e9gulation mesur\u00e9e dans les tumeurs, puis classer les carcinog\u00e8nes suspect\u00e9s selon leur ressemblance avec ceux d\u00e9j\u00e0 \u00e9tablis, afin de pouvoir signaler une substance sans recours au mod\u00e8le animal.",
       'about.p2'        : "Avant mon doctorat, j\u2019ai travaill\u00e9 comme <strong>Ing\u00e9nieur de Recherche \u00e0 l\u2019\u00c9cole Polytechnique</strong> (Laboratoire d\u2019Optique et Biosciences, 2021\u20132023), o\u00f9 j\u2019ai d\u00e9velopp\u00e9 des <strong>r\u00e9seaux de neurones bas\u00e9s sur des graphes</strong> personnalis\u00e9s pour pr\u00e9dire l\u2019affinit\u00e9 de liaison prot\u00e9ine-ligand et men\u00e9 des campagnes de criblage virtuel bas\u00e9es sur la structure pour cibler les inhibiteurs de ThyX. J\u2019ai \u00e9galement \u00e9t\u00e9 laur\u00e9at du <strong>prix X-Grant</strong> dans le cadre du programme entrepreneurial X-Novation.",
       'about.p3'        : "Mes recherches pr\u00e9c\u00e9dentes \u00e0 l\u2019<strong>INSERM</strong> ont port\u00e9 sur la biologie des syst\u00e8mes, la toxicologie en r\u00e9seau, les relations entre r\u00e9cepteurs olfactifs et mol\u00e9cules, ainsi que l\u2019application de l\u2019apprentissage profond \u00e0 la pharmacologie multi-cibles.",
+      'proj.heading'    : 'Code et donn\u00e9es',
+      'proj.link'       : 'Voir le d\u00e9p\u00f4t',
+      'proj.intro'      : "Chaque analyse publi\u00e9e est livr\u00e9e sous forme de d\u00e9p\u00f4t reproductible : scripts de t\u00e9l\u00e9chargement versionn\u00e9s, environnements fig\u00e9s, et une liste explicite de ce que le travail ne montre <em>pas</em>.",
+      'proj.1.desc'     : "Classe des substances comme facteurs de risque candidats du cancer du sein en comparant leur empreinte transcriptionnelle dans MCF7 (LINCS L1000) \u00e0 la d\u00e9r\u00e9gulation mesur\u00e9e entre 1\u202f092 tumeurs TCGA-BRCA et le tissu mammaire sain GTEx. Comprend un seuil de similarit\u00e9 calibr\u00e9 contre une distribution nulle de profils al\u00e9atoires, et des r\u00e9seaux de co-expression WGCNA reliant composantes et modules de g\u00e8nes.",
+      'proj.2.desc'     : "Profilage morphologique des donn\u00e9es Cell Painting du consortium JUMP et cadre de score par guilt-by-association classant des carcinog\u00e8nes mammaires suspect\u00e9s, appliqu\u00e9 de mani\u00e8re prospective \u00e0 des candidats perturbateurs endocriniens issus d\u2019EDLists. Cinq m\u00e9triques de similarit\u00e9, trois repr\u00e9sentations, validation leave-one-out et diagnostic de stabilit\u00e9 de la s\u00e9lection de variables.",
+      'proj.3.journal'  : 'Serveur web \u00b7 Nucleic Acids Research 2024',
+      'proj.3.desc'     : "Un serveur web d\u00e9ploy\u00e9 qui pr\u00e9dit les relations entre mol\u00e9cules, r\u00e9cepteurs olfactifs et odeurs \u2014 co-sign\u00e9, et la preuve que les mod\u00e8les sortent du notebook pour atteindre des utilisateurs.",
+      'pub.altex26.journal' : 'ALTEX \u00b7 en r\u00e9vision',
+      'pub.altex26.title'   : 'A Cell Painting-based tool for the risk assessment of mammary carcinogens and endocrine disruptors',
+      'edu.1.mention'   : 'soutenance pr\u00e9vue le 11 d\u00e9cembre 2026',
       'exp.heading'     : 'Exp\u00e9rience',
       'exp.1.period'    : 'Ao\u00fbt 2021 \u2014 F\u00e9vrier 2023',
       'exp.1.title'     : 'Ing\u00e9nieur de Recherche',
@@ -924,7 +1135,7 @@
       'exp.3.li1'       : 'Construction de bases de donn\u00e9es par web-scraping',
       'exp.3.li2'       : 'G\u00e9n\u00e9ration et analyse de mod\u00e8les de classification multi-label ML/DL\u00a0: RF, MLP, CNN, GCN',
       'exp.3.li3'       : 'Repr\u00e9sentations mol\u00e9culaires\u00a0: empreintes chimiques, descripteurs mol\u00e9culaires, graphes mol\u00e9culaires',
-      'exp.3.li4'       : 'R\u00e9duction de dimensionnalit\u00e9 et visualisation de l\u2019espace chimique (UMAP)',
+      'exp.3.li4'       : 'R\u00e9duction de dimensionnalit\u00e9 et regroupement de larges jeux de mol\u00e9cules (UMAP)',
       'exp.4.period'    : 'Avril 2019 \u2014 Juin 2019 \u2014 <em>Stage (2 mois)</em>',
       'exp.4.title'     : 'Stage de Recherche',
       'exp.4.supervised': 'supervis\u00e9 par Dr. Audouze',
@@ -932,7 +1143,7 @@
       'skills.heading'  : 'Comp\u00e9tences',
       'edu.heading'     : 'Formation',
       'edu.1.degree'    : 'Doctorat en Bioinformatique',
-      'edu.1.period'    : "2023 \u2014 aujourd\u2019hui",
+      'edu.1.period'    : '2023 \u2014 2026',
       'edu.2.degree'    : 'Master en Bioinformatique',
       'edu.2.period'    : '2018 \u2014 2020',
       'edu.3.degree'    : 'Licence en Sciences de la Vie',
@@ -940,13 +1151,18 @@
       'contact.heading' : 'Contact',
       'contact.intro'   : "N\u2019h\u00e9sitez pas \u00e0 me contacter pour des collaborations de recherche, des questions ou des discussions autour de l\u2019IA et de la d\u00e9couverte de m\u00e9dicaments.",
       'contact.email'   : 'Envoyer un e-mail',
-      'footer.text'     : '\u00a9 2024 Rayane Achebouche \u2014 Universit\u00e9 Paris Cit\u00e9',
+      'footer.text'     : '\u00a9 2026 Rayane Achebouche \u2014 Universit\u00e9 Paris Cit\u00e9',
     }
   };
 
   /* ── STATE ── */
   let currentLang = 'en';
-  let isLight = false;
+  /* Thème : préférence enregistrée, sinon réglage du système. */
+  const stored = (() => { try { return localStorage.getItem('theme'); } catch (e) { return null; } })();
+  let isLight = stored
+    ? stored === 'light'
+    : window.matchMedia('(prefers-color-scheme: light)').matches;
+  document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
 
   /* ── APPLY LANGUAGE ── */
   function applyLang(lang) {
@@ -971,12 +1187,46 @@
   const sunPath  = 'M12 3v1m0 16v1M4.22 4.22l.7.7m12.16 12.16.7.7M3 12h1m16 0h1M4.92 19.08l.7-.7M18.36 5.64l.7-.7M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7z';
   const moonPath = 'M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z';
 
-  document.getElementById('theme-toggle').addEventListener('click', () => {
-    isLight = !isLight;
-    document.documentElement.setAttribute('data-theme', isLight ? 'light' : '');
+  function paintTheme() {
+    document.documentElement.setAttribute('data-theme', isLight ? 'light' : 'dark');
     document.getElementById('theme-label').textContent = T[currentLang][isLight ? 'theme.dark' : 'theme.light'];
     document.getElementById('theme-icon').querySelector('path').setAttribute('d', isLight ? sunPath : moonPath);
+  }
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    isLight = !isLight;
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+    paintTheme();
   });
+  paintTheme();
+
+  /* ── PROGRESSION DE LECTURE ── */
+  const bar = document.getElementById('progress');
+  const onScroll = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── LIEN DE NAV ACTIF ── */
+  const links = [...document.querySelectorAll('nav ul li a')];
+  const targets = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+  if ('IntersectionObserver' in window && targets.length) {
+    const seen = new Map();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => seen.set(e.target.id, e.intersectionRatio));
+      let best = null, ratio = 0;
+      seen.forEach((r, id) => { if (r > ratio) { ratio = r; best = id; } });
+      links.forEach(a => {
+        if (best && a.getAttribute('href') === '#' + best) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-25% 0px -60% 0px', threshold: [0, .25, .5, 1] });
+    targets.forEach(t => io.observe(t));
+  }
 </script>
 </body>
 </html>

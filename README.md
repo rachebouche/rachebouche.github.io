@@ -1,7 +1,7 @@
 <h1 align="center">Rayane Achebouche</h1>
 
 <p align="center">
-  <em>PhD Student in Bioinformatics &mdash; AI for Drug Discovery</em>
+  <em>PhD in Bioinformatics &mdash; AI linking molecular structure to biological effect</em>
 </p>
 
 <p align="center">
@@ -11,13 +11,16 @@
   <a href="https://www.linkedin.com/in/rayane-achebouche">
     <img src="https://img.shields.io/badge/LinkedIn-rayane--achebouche-0077B5?style=flat-square&logo=linkedin&logoColor=white" />
   </a>
+  <a href="https://rachebouche.github.io">
+    <img src="https://img.shields.io/badge/Website-rachebouche.github.io-2f81f7?style=flat-square&logo=github&logoColor=white" />
+  </a>
 </p>
 
 ---
 
 ## About Me
 
-I am a **PhD student in Bioinformatics** at Université Paris Cité, studying the impact of **endocrine disruptors** on breast cancer onset and progression using artificial intelligence. My doctoral research integrates **transcriptomics** and **high-throughput phenotypic profiling** (cell morphological data) to build predictive models capable of identifying chemical risk factors for breast cancer.
+I am a **PhD student in Bioinformatics** at Université Paris Cité (INSERM U1133). My thesis asks which environmental chemicals raise breast cancer risk, and answers it by integrating two kinds of data that are rarely analysed together: **transcriptomic responses** to chemical exposure and **high-content cell imaging**. The approach is comparative — confronting the signature a compound leaves in a cell line with the deregulation measured in tumours, then ranking suspected carcinogens by how closely they resemble those already established, so that a chemical can be flagged without an animal test.
 
 Previously, I worked as a **Research Engineer at Ecole Polytechnique** (Laboratoire d'Optique et Biosciences), where I built custom Graph Neural Network architectures for protein-ligand binding affinity prediction and conducted structure-based virtual screening campaigns targeting ThyX inhibitors. I was also a **laureate of the X-Grant prize** through the X-Novation entrepreneurial program.
 
@@ -36,10 +39,24 @@ Previously, I worked as a **Research Engineer at Ecole Polytechnique** (Laborato
 
 | Year | Title | Journal | DOI |
 |------|-------|---------|-----|
-| 2025 | Assessment of chemical risk factor for breast cancer based on gene expression profiles | *Scientific Reports* | [10.1038/s41598-025-27732-0](https://doi.org/10.1038/s41598-025-27732-0) |
+| under review | A Cell Painting-based tool for the risk assessment of mammary carcinogens and endocrine disruptors | *ALTEX* | [10.64898/2026.09.04.749408](https://doi.org/10.64898/2026.09.04.749408) &middot; [code](https://github.com/rachebouche/mammary-carcinogenicity-cellpainting) |
+| 2025 | Assessment of chemical risk factor for breast cancer based on gene expression profiles | *Scientific Reports* | [10.1038/s41598-025-27732-0](https://doi.org/10.1038/s41598-025-27732-0) &middot; [code](https://github.com/rachebouche/breast-cancer-risk-assessment-transcriptomics) |
 | 2024 | Pred-O3, a web server to predict molecules, olfactory receptors and odor relationships | *Nucleic Acids Research* | [10.1093/nar/gkae305](https://doi.org/10.1093/nar/gkae305) |
 | 2022 | Application of artificial intelligence to decode the relationships between smell, olfactory receptors and small molecules | *Scientific Reports* | [10.1038/s41598-022-23176-y](https://doi.org/10.1038/s41598-022-23176-y) |
 | 2020 | Computational systems biology as an animal-free approach to characterize toxicological effects of persistent organic pollutants | *ALTEX* | [10.14573/altex.1910161](https://doi.org/10.14573/altex.1910161) |
+
+---
+
+## Code & Data
+
+Every published analysis is released as a reproducible repository — versioned download
+scripts, frozen environments, and a stated list of what the work does *not* show.
+
+| Repository | What it does |
+|---|---|
+| [breast-cancer-risk-assessment-transcriptomics](https://github.com/rachebouche/breast-cancer-risk-assessment-transcriptomics) | Ranks chemicals as candidate breast cancer risk factors by comparing their transcriptional footprint in MCF7 (LINCS L1000) with the deregulation between 1,092 TCGA-BRCA tumours and GTEx normal breast tissue. Similarity threshold calibrated against a null distribution; WGCNA co-expression networks. |
+| [mammary-carcinogenicity-cellpainting](https://github.com/rachebouche/mammary-carcinogenicity-cellpainting) | JUMP Cell Painting morphological profiling and a Guilt-By-Association framework ranking suspected mammary carcinogens, applied prospectively to EDLists candidates. Archived at Zenodo. |
+| [Pred-O3](https://doi.org/10.1093/nar/gkae305) | Deployed web server predicting molecule–olfactory receptor–odour relationships (co-authored, *NAR* 2024). |
 
 ---
 
@@ -101,8 +118,8 @@ Previously, I worked as a **Research Engineer at Ecole Polytechnique** (Laborato
 
 ## Languages
 
-- **French** — Native
-- **English** — C1
+- **French** — native
+- **English** — professional working proficiency; all five of my publications are written in English
 
 ---
 
